@@ -1,6 +1,6 @@
 {
   "name": "@alxui/eslint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "ESLint configuration used by ALX.",
   "main": "index.js",
@@ -16,7 +16,6 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import-helpers": "^1.2.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "lint-staged": "^12.3.7",
     "prettier": "^2.6.2",
     "prettier-eslint": "^13.0.0",
     "prettier-eslint-cli": "^5.0.1",
