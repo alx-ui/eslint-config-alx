@@ -8,6 +8,10 @@
   "repository": {
     "url": "git+https://github.com/alxUI/eslint-config-alx.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import-helpers": "^1.2.1",
