@@ -7,8 +7,9 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'standard',
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -21,12 +22,18 @@ module.exports = {
   plugins: [
     'react',
     'jsx-a11y',
-    "eslint-plugin-import-helpers",
+    'eslint-plugin-import-helpers',
     '@typescript-eslint'
   ],
   rules: {
-    'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off',
+    'prettier/prettier': ['error', {
+      'printWidth': 80,
+      'tabWidth': 2,
+      'singleQuote': true,
+      'trailingComma': 'all',
+      'arrowParens': 'always',
+      'semi': false,
+    }],
     'jsx-a11y/alt-text': [
       'warn',
       {
@@ -34,31 +41,33 @@ module.exports = {
         img: ['Image'],
       },
     ],
+    'import-helpers/order-imports': [
+      'warn',
+      {
+        'newlinesBetween': 'always',
+        'groups': [
+          '/^react/',
+          'module',
+          '/^pages/',
+          '/^components/',
+          '/^utils/',
+          '/^contexts/',
+          '/^hooks/',
+          '/^axios/',
+          '/^services/',
+          '/^styles/',
+          ['parent', 'sibling', 'index']
+        ],
+        'alphabetize': { 'order': 'asc', 'ignoreCase': true }
+      }
+    ],
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
     'jsx-a11y/aria-props': 'warn',
     'jsx-a11y/aria-proptypes': 'warn',
     'jsx-a11y/aria-unsupported-elements': 'warn',
     'jsx-a11y/role-has-required-aria-props': 'warn',
     'jsx-a11y/role-supports-aria-props': 'warn',
-    "import-helpers/order-imports": [
-      "warn",
-      {
-        "newlinesBetween": "always",
-        "groups": [
-          "/^react/",
-          "module",
-          "/^pages/",
-          "/^components/",
-          "/^utils/",
-          "/^contexts/",
-          "/^hooks/",
-          "/^axios/",
-          "/^services/",
-          "/^styles/",
-          ["parent", "sibling", "index"]
-        ],
-        "alphabetize": { "order": "asc", "ignoreCase": true }
-      }
-    ],
     'camelcase': 'off',
     'semi': 'off',
     'eqeqeq': 'off',
