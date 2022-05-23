@@ -6,7 +6,7 @@
   "main": "index.js",
   "license": "MIT",
   "repository": {
-    "url": "alxUI/eslint-config-alx"
+    "url": "git+https://github.com/alxUI/eslint-config-alx.git"
   },
   "dependencies": {
     "eslint-config-prettier": "^8.5.0",
