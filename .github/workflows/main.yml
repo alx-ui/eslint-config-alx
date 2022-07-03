@@ -22,7 +22,7 @@ jobs:
         run: npx semantic-release
 
   publish-npm:
-    needs: build
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Checkout
