@@ -1,4 +1,4 @@
-name: 🚀 Publish Package NPM
+name: "🚀 Publish Package NPM"
 
 on:
   push:
