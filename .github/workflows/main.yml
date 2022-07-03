@@ -12,13 +12,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14
-      - name: Install dependencies
-        run: yarn
-      - name: Fix Lint
-        run: yarn lint
-      - name: Build app
-        run: yarn build
+          node-version: 16
       - name: Semantic Versioning
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
