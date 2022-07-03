@@ -25,6 +25,8 @@ jobs:
     needs: publish
     runs-on: ubuntu-latest
     steps:
+      - name: ⬇ Git Pull
+        run: git pull origin master
       - name: 📚 Checkout
         uses: actions/checkout@v3
       - name: 🟢 Node.js
