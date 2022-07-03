@@ -9,8 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: 📚 Checkout
+        uses: actions/checkout@v3
+      - name: 🟢 Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
@@ -18,11 +20,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: 📚 Checkout
+        uses: actions/checkout@v3
+      - name: 🟢 Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm publish
+      - name: 🚀 Publish NPM
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
