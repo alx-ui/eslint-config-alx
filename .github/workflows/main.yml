@@ -1,4 +1,4 @@
-name: Semantic Versioning
+name: Semantic Versioning and Publish to NPM
 
 on:
   push:
@@ -8,14 +8,31 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js
+      - name: 📚 Checkout
+        uses: actions/checkout@v2
+      - name: 🟢 Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: Install dependencies
+      - name: ☁ Install dependencies
         run: yarn
-      - name: Semantic Versioning
+      - name: 🚦 Semantic Versioning
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Checkout
+        uses: actions/checkout@v3
+      - name: 🟢 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - name: 🚀 Publish NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
