@@ -34,6 +34,11 @@
     "eslint": "^8.13.0",
     "typescript": ">=3.3.1"
   },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^19.0.3"
+  },
   "peerDependenciesMeta": {
     "typescript": {
       "optional": true
