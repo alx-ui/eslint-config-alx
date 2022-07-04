@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/alxUI/eslint-config-alx/compare/v1.0.2...v1.0.3) (2022-07-04)
+
+
+### Bug Fixes
+
+* docs ([93ea646](https://github.com/alxUI/eslint-config-alx/commit/93ea646a93c4f29aa21ee3e786b3e5392ea0d584))
+
 ## [1.0.2](https://github.com/alxUI/eslint-config-alx/compare/v1.0.1...v1.0.2) (2022-07-04)
 
 
