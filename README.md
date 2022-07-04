@@ -24,7 +24,7 @@ yarn add -D eslint @ialexanderbrito/eslint-config
 2. Crie um arquivo `.eslintrc.json` e adicione a configuração:
 ```
 {
-  "extends": "@ialexanderbrito/eslint-config/react" 
+  "extends": "@ialexanderbrito/eslint-config/react"
 }
 ```
 
