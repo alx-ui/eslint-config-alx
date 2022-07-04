@@ -2,7 +2,7 @@ name: "🚀 Publish Package NPM"
 
 on:
   workflow_run:
-    workflow: ["💻 Sematic Release"]
+    workflows: ["💻 Sematic Release"]
     types:
       - completed
 
