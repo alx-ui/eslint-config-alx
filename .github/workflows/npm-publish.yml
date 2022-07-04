@@ -17,6 +17,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: 📦 Install Dependencies
+        run: yarn
+      - name: 📦 Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release
 
   publish-npm:
     needs: build
