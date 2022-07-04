@@ -1,5 +1,5 @@
 {
-  "name": "@alxui/eslint-config",
+  "name": "@ialexanderbrito/eslint-config",
   "version": "1.0.0",
   "private": false,
   "description": "ESLint configuration used by ALX.",
