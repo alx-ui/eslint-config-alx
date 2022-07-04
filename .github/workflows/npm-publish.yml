@@ -2,6 +2,8 @@ name: "🚀 Publish Package NPM"
 
 on:
   push:
+    branches:
+      - master
     tags:
       v1.*
 
