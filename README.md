@@ -12,18 +12,19 @@
 ## Setup
 
 1. Instale as dependências
+
 ```
-npm i -D eslint @alxui/eslint-config
+npm i -D @ialexanderbrito/eslint-config
 ```
 
 ```
-yarn add -D eslint @alxui/eslint-config
+yarn add -D eslint @ialexanderbrito/eslint-config
 ```
 
 2. Crie um arquivo `.eslintrc.json` e adicione a configuração:
 ```
 {
-  "extends": "@alxui/eslint-config/react"
+  "extends": "@ialexanderbrito/eslint-config/react"
 }
 ```
 
