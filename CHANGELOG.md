@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/alxUI/eslint-config-alx/compare/v1.1.0...v1.2.0) (2022-11-18)
+
+
+### Features
+
+* add node ([ecdfaf4](https://github.com/alxUI/eslint-config-alx/commit/ecdfaf44c0a25c2a868d0cdd4f5bc080195a5375))
+* add update new version dependencies ([da69a71](https://github.com/alxUI/eslint-config-alx/commit/da69a71646dbcf3afd04dd3b585ea7f3c65b1545))
+
 # [1.1.0](https://github.com/alxUI/eslint-config-alx/compare/v1.0.3...v1.1.0) (2022-11-03)
 
 
