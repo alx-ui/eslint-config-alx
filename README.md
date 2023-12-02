@@ -11,7 +11,7 @@
 
 ## Setup
 
-1. Instale as dependências
+1. Instale as dependências.
 
 ```
 npm i -D @ialexanderbrito/eslint-config
