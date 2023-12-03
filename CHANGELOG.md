@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/alxUI/eslint-config-alx/compare/v1.4.1...v2.0.0) (2023-12-03)
+
+
+### Continuous Integration
+
+* update node ([31bb6e7](https://github.com/alxUI/eslint-config-alx/commit/31bb6e7bea7df08187c582ac2bf224a4652c3a2c))
+
+
+### Features
+
+* update eslint and prettier versions ([85715b4](https://github.com/alxUI/eslint-config-alx/commit/85715b45c71430dc9feadb7a13397a043c3e10bf))
+
+
+### BREAKING CHANGES
+
+* updates mirror and node v18
+* updates mirror
+
 ## [1.4.1](https://github.com/alxUI/eslint-config-alx/compare/v1.4.0...v1.4.1) (2023-12-02)
 
 
