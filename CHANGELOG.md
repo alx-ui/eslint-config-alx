@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/alxUI/eslint-config-alx/compare/v2.0.0...v2.0.1) (2024-01-17)
+
+
+### Bug Fixes
+
+* import helpers next config ([ff18569](https://github.com/alxUI/eslint-config-alx/commit/ff185699612ee60e5c816d1d1afec3c1c180be9c))
+
 # [2.0.0](https://github.com/alxUI/eslint-config-alx/compare/v1.4.1...v2.0.0) (2023-12-03)
 
 
