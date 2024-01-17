@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: ["prettier"],
+  plugins: ["prettier", "eslint-plugin-import-helpers"],
   extends: ["next", "next/core-web-vitals", "prettier"],
   rules: {
     'prettier/prettier': 'error',
