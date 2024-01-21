@@ -48,7 +48,7 @@ module.exports = {
     'radix': 'off',
     'react/display-name': 'off',
     'func-names': 'off',
-     'import-helpers/order-imports': [
+    'import-helpers/order-imports': [
       'warn',
       {
         'newlinesBetween': 'always',
