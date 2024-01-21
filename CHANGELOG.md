@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/alxUI/eslint-config-alx/compare/v2.0.2...v2.1.0) (2024-01-21)
+
+
+### Features
+
+* update version dependencies ([39a2f34](https://github.com/alxUI/eslint-config-alx/commit/39a2f3435f9cf97f22456d6e71be1ea15afb4a79))
+
 ## [2.0.2](https://github.com/alxUI/eslint-config-alx/compare/v2.0.1...v2.0.2) (2024-01-17)
 
 
