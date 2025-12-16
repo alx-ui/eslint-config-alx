@@ -1,6 +1,6 @@
 {
   "name": "@ialexanderbrito/eslint-config",
-  "version": "3.0.0",
+  "version": "2.2.0",
   "private": false,
   "description": "ESLint configuration used by ALX.",
   "type": "module",

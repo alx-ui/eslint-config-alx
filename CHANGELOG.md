@@ -1,3 +1,17 @@
+# [2.2.0](https://github.com/alx-ui/eslint-config-alx/compare/v2.1.0...v2.2.0) (2025-12-16)
+
+
+### Bug Fixes
+
+* correct repository URL format in package.json ([7ad9453](https://github.com/alx-ui/eslint-config-alx/commit/7ad94535d9bba96991df2a725ce359e0066660b4))
+* correct semantic release workflow and update npm publish settings ([2ff5353](https://github.com/alx-ui/eslint-config-alx/commit/2ff535389038743bfa03c78262f21782dd5c733c))
+
+
+### Features
+
+* add initial ESLint configuration module ([18d8889](https://github.com/alx-ui/eslint-config-alx/commit/18d8889fe72850d3a69e3230a6ddf94dc794a6bc))
+* add Prettier configuration file ([4985db1](https://github.com/alx-ui/eslint-config-alx/commit/4985db1711f402f814007153e3ee01f76db93a86))
+
 # [2.1.0](https://github.com/alxUI/eslint-config-alx/compare/v2.0.2...v2.1.0) (2024-01-21)
 
 
