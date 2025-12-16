@@ -1,43 +1,37 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true
-  },
-  extends: [
-    'standard',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:prettier/recommended',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true
+import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import globals from 'globals';
+import prettierConfig from './prettier.config.js';
+
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  eslintConfigPrettier,
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+      },
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
-    ecmaVersion: 'latest',
-    sourceType: 'module'
-  },
-  plugins: [
-    'jsx-a11y',
-    'eslint-plugin-import-helpers',
-    '@typescript-eslint'
-  ],
-  rules: {
-    'prettier/prettier': ['error', {
-      'printWidth': 80,
-      'tabWidth': 2,
-      'singleQuote': true,
-      'trailingComma': 'all',
-      'arrowParens': 'always',
-      "semi": true,
-    }],
-  },
-  settings: {
-    react: {
-      version: 'detect',
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+      prettier: eslintPluginPrettier,
     },
-    'import/parsers': {
-      [require.resolve('@typescript-eslint/parser')]: ['.ts', '.tsx', '.d.ts'],
+    rules: {
+      'prettier/prettier': ['error', prettierConfig],
     },
-  }
-}
+  },
+];
