@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/alx-ui/eslint-config-alx/compare/v2.2.0...v2.2.1) (2025-12-16)
+
+
+### Bug Fixes
+
+* ensure correct reference is used for checkout step in npm-publish workflow ([58a6879](https://github.com/alx-ui/eslint-config-alx/commit/58a6879604c53f1edae444f837b8a731cef73519))
+
 # [2.2.0](https://github.com/alx-ui/eslint-config-alx/compare/v2.1.0...v2.2.0) (2025-12-16)
 
 
