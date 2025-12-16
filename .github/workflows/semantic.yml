@@ -1,0 +1,31 @@
+name: "💻 Semantic Release"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: 📚 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: 🟢 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 📦 Install Dependencies
+        run: npm ci
+      - name: 🚀 Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: npx semantic-release
