@@ -13,7 +13,8 @@
   },
   "license": "MIT",
   "repository": {
-    "url": "git+https://github.com/alxUI/eslint-config-alx.git"
+    "type": "git",
+    "url": "git+https://github.com/alx-ui/eslint-config-alx.git"
   },
   "publishConfig": {
     "access": "public",
