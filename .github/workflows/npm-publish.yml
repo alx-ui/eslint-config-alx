@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org/
       - name: 🔍 Check if version is already published
         id: check-version
         run: |
@@ -47,6 +46,4 @@ jobs:
         run: npm run check
       - name: 🚀 Publish NPM
         if: steps.check-version.outputs.published == 'false'
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: npm publish --provenance --access public
