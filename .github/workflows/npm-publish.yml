@@ -1,30 +1,52 @@
 name: "🚀 Publish Package NPM"
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["💻 Semantic Release"]
     types:
       - completed
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: 📚 Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: master
       - name: 🟢 Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org/
+      - name: 🔍 Check if version is already published
+        id: check-version
+        run: |
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          echo "name=$PKG_NAME" >> "$GITHUB_OUTPUT"
+          echo "version=$PKG_VERSION" >> "$GITHUB_OUTPUT"
+          if npm view "${PKG_NAME}@${PKG_VERSION}" version >/dev/null 2>&1; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "${PKG_NAME}@${PKG_VERSION} is already published on npm. Skipping."
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "Ready to publish ${PKG_NAME}@${PKG_VERSION}."
+          fi
       - name: 📦 Install Dependencies
+        if: steps.check-version.outputs.published == 'false'
         run: npm ci
       - name: ✅ Verify Package
+        if: steps.check-version.outputs.published == 'false'
         run: npm run check
       - name: 🚀 Publish NPM
+        if: steps.check-version.outputs.published == 'false'
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
