@@ -1,9 +1,13 @@
-/** @type {import("prettier").Config} */
+/** @type {import('prettier').Config} */
 export default {
   printWidth: 80,
   tabWidth: 2,
-  singleQuote: true,
-  trailingComma: 'all',
-  arrowParens: 'always',
+  useTabs: false,
   semi: true,
+  singleQuote: true,
+  jsxSingleQuote: false,
+  trailingComma: 'all',
+  bracketSpacing: true,
+  arrowParens: 'always',
+  endOfLine: 'auto',
 };

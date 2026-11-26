@@ -9,8 +9,20 @@
     ".": "./index.js",
     "./node": "./node.js",
     "./react": "./react.js",
-    "./next": "./next.js"
+    "./next": "./next.js",
+    "./prettier": "./prettier.config.js",
+    "./biome": "./biome.json",
+    "./biome.json": "./biome.json"
   },
+  "files": [
+    "index.js",
+    "node.js",
+    "react.js",
+    "next.js",
+    "prettier.config.js",
+    "biome.json",
+    "README.md"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,26 +33,37 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@eslint/js": "^9.17.0",
-    "@next/eslint-plugin-next": "^15.1.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import-x": "^4.5.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "globals": "^15.14.0",
-    "prettier": "^3.4.2",
-    "typescript-eslint": "^8.18.0"
+    "@eslint-react/eslint-plugin": "^5.30.6",
+    "@eslint/js": "^10.0.1",
+    "@next/eslint-plugin-next": "^16.4.6",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import-x": "^4.18.1",
+    "eslint-plugin-jsx-a11y-x": "^0.2.0",
+    "eslint-plugin-prettier": "^5.5.7",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "typescript-eslint": "^8.74.0"
+  },
+  "scripts": {
+    "test": "node --test test",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "check": "npm run lint && npm test"
   },
   "peerDependencies": {
-    "eslint": "^9.17.0",
+    "eslint": "^10.0.0",
     "typescript": ">=5.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.6.9",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "semantic-release": "^24.2.0"
+    "eslint": "^10.15.0",
+    "semantic-release": "^25.0.9",
+    "typescript": "^6.0.3"
   },
   "peerDependenciesMeta": {
     "typescript": {
@@ -48,7 +71,6 @@
     }
   },
   "engines": {
-    "node": ">=18.18.0"
-  },
-  "_releaseHint": "force-3.0.0"
+    "node": ">=20.19.0"
+  }
 }

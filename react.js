@@ -1,31 +1,41 @@
 import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import eslintPluginReact from 'eslint-plugin-react';
+import eslintReact from '@eslint-react/eslint-plugin';
+import eslintPluginImportX, {
+  createNodeResolver,
+} from 'eslint-plugin-import-x';
+import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y-x';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
-import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
-import eslintPluginImportX from 'eslint-plugin-import-x';
-import eslintPluginPrettier from 'eslint-plugin-prettier';
-import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
 import prettierConfig from './prettier.config.js';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+  {
+    name: 'alx/react/ignores',
+    ignores: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/build/**',
+      '**/coverage/**',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  eslintPluginReact.configs.flat.recommended,
-  eslintPluginReact.configs.flat['jsx-runtime'],
-  eslintPluginJsxA11y.flatConfigs.recommended,
-  eslintConfigPrettier,
+  eslintReact.configs['recommended-typescript'],
+  eslintPluginReactHooks.configs.flat.recommended,
+  eslintPluginJsxA11y.configs.recommended,
   {
+    name: 'alx/react/rules',
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
         ...globals.browser,
-        ...globals.es2021,
+        ...globals.es2026,
       },
-      parser: tseslint.parser,
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -33,28 +43,50 @@ export default [
       },
     },
     plugins: {
-      '@typescript-eslint': tseslint.plugin,
-      react: eslintPluginReact,
-      'react-hooks': eslintPluginReactHooks,
-      'jsx-a11y': eslintPluginJsxA11y,
       'import-x': eslintPluginImportX,
-      prettier: eslintPluginPrettier,
     },
     settings: {
-      react: {
-        version: 'detect',
-      },
+      'import-x/resolver-next': [
+        createNodeResolver({
+          extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.json'],
+        }),
+      ],
     },
     rules: {
-      ...eslintPluginReactHooks.configs.recommended.rules,
-      'prettier/prettier': ['error', prettierConfig],
-      'jsx-a11y/alt-text': [
+      // Avoid duplicating eslint-plugin-react-hooks rules in @eslint-react
+      '@eslint-react/error-boundaries': 'off',
+      '@eslint-react/exhaustive-deps': 'off',
+      '@eslint-react/purity': 'off',
+      '@eslint-react/rules-of-hooks': 'off',
+      '@eslint-react/set-state-in-effect': 'off',
+      '@eslint-react/set-state-in-render': 'off',
+      '@eslint-react/static-components': 'off',
+      '@eslint-react/unsupported-syntax': 'off',
+      '@eslint-react/use-memo': 'off',
+      // React preferences
+      '@eslint-react/no-array-index-key': 'off',
+      '@eslint-react/no-missing-key': 'off',
+      // React Hooks
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
+      // JSX A11y
+      'jsx-a11y-x/alt-text': [
         'warn',
         {
           elements: ['img'],
           img: ['Image'],
         },
       ],
+      'jsx-a11y-x/aria-props': 'warn',
+      'jsx-a11y-x/aria-proptypes': 'warn',
+      'jsx-a11y-x/aria-unsupported-elements': 'warn',
+      'jsx-a11y-x/role-has-required-aria-props': 'warn',
+      'jsx-a11y-x/role-supports-aria-props': 'warn',
+      'jsx-a11y-x/click-events-have-key-events': 'off',
+      'jsx-a11y-x/no-static-element-interactions': 'off',
+      'jsx-a11y-x/heading-has-content': 'off',
+      'jsx-a11y-x/label-has-associated-control': 'off',
+      // Import order
       'import-x/order': [
         'warn',
         {
@@ -80,40 +112,29 @@ export default [
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
-      'jsx-a11y/aria-props': 'warn',
-      'jsx-a11y/aria-proptypes': 'warn',
-      'jsx-a11y/aria-unsupported-elements': 'warn',
-      'jsx-a11y/role-has-required-aria-props': 'warn',
-      'jsx-a11y/role-supports-aria-props': 'warn',
+      // General rules
       camelcase: 'off',
-      semi: 'off',
       eqeqeq: 'off',
-      'react/jsx-filename-extension': ['warn', { extensions: ['.tsx', '.jsx'] }],
-      'arrow-body-style': ['error', 'as-needed'],
+      'func-names': 'off',
       'class-methods-use-this': 'off',
-      'jsx-a11y/click-events-have-key-events': 'off',
-      'jsx-a11y/no-static-element-interactions': 'off',
-      'react/no-array-index-key': 'off',
-      'react/jsx-props-no-spreading': 'off',
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'error',
+      'consistent-return': 'off',
+      'prefer-promise-reject-errors': 'off',
+      radix: 'off',
       'no-nested-ternary': 'error',
       'no-param-reassign': 'error',
       'no-unneeded-ternary': 'error',
-      'react/forbid-prop-types': 'off',
-      'react/require-default-props': 'off',
-      'react/destructuring-assignment': 'off',
-      'jsx-a11y/heading-has-content': 'off',
-      'react/jsx-key': 'off',
-      'consistent-return': 'off',
-      'react/no-unescaped-entities': 'off',
-      'jsx-a11y/label-has-associated-control': 'off',
-      'prefer-promise-reject-errors': 'off',
-      radix: 'off',
-      'react/display-name': 'off',
-      'func-names': 'off',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+    },
+  },
+  eslintPluginPrettierRecommended,
+  {
+    name: 'alx/react/prettier',
+    rules: {
+      'prettier/prettier': ['error', prettierConfig],
     },
   },
 ];
