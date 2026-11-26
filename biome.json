@@ -13,7 +13,8 @@
       "!**/dist",
       "!**/build",
       "!**/.next",
-      "!**/coverage"
+      "!**/coverage",
+      "!**/CHANGELOG.md"
     ]
   },
   "formatter": {

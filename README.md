@@ -55,20 +55,22 @@ pnpm add -D eslint @ialexanderbrito/eslint-config
 ## 🚀 Quick Start
 
 1. **Create an `eslint.config.mjs` (or `.js`/`.cjs`/`.mts`) file in your project root:**
-
    - **Node.js / TypeScript:**
+
      ```js
      import alxConfig from '@ialexanderbrito/eslint-config/node';
 
      export default [...alxConfig];
      ```
    - **React:**
+
      ```js
      import alxConfig from '@ialexanderbrito/eslint-config/react';
 
      export default [...alxConfig];
      ```
    - **Next.js:**
+
      ```js
      import alxConfig from '@ialexanderbrito/eslint-config/next';
 
@@ -78,6 +80,7 @@ pnpm add -D eslint @ialexanderbrito/eslint-config
 2. **(Optional) Share the exact same Prettier config with your editor & CLI:**
 
    Create `prettier.config.js` (or `.mjs`) in your project root:
+
    ```js
    export { default } from '@ialexanderbrito/eslint-config/prettier';
    ```
@@ -85,6 +88,7 @@ pnpm add -D eslint @ialexanderbrito/eslint-config
 3. **(Optional) Customize rules:**
 
    Add your own config blocks after spreading the preset:
+
    ```js
    import alxConfig from '@ialexanderbrito/eslint-config/react';
 
@@ -105,6 +109,7 @@ pnpm add -D eslint @ialexanderbrito/eslint-config
 ESLint 10+ **only supports Flat Config**. If you are using `.eslintrc.json` or `.eslintrc.js`, migrate as follows:
 
 **Before (legacy):**
+
 ```json
 {
   "extends": "@ialexanderbrito/eslint-config/react"
@@ -112,6 +117,7 @@ ESLint 10+ **only supports Flat Config**. If you are using `.eslintrc.json` or `
 ```
 
 **After (Flat Config):**
+
 ```js
 import alxConfig from '@ialexanderbrito/eslint-config/react';
 
@@ -119,6 +125,7 @@ export default [...alxConfig];
 ```
 
 **Key differences:**
+
 - Config is now an array, not an object
 - No more `extends` — use the spread operator
 - File must be `eslint.config.js`, `.mjs`, `.cjs`, or `.mts`
@@ -131,11 +138,13 @@ See [ESLint Flat Config docs](https://eslint.org/docs/latest/use/configure/confi
 
 - **VSCode:** Install the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extensions and make sure your editor uses Node.js >=20.19.0.
 - **Run lint & autofix:**
+
   ```bash
   npx eslint .
   npx eslint --fix .
   ```
 - **Inspect resolved config:**
+
   ```bash
   npx eslint --print-config src/index.ts
   ```
@@ -182,28 +191,34 @@ pnpm add -D eslint @ialexanderbrito/eslint-config
 
 1. Crie um arquivo `eslint.config.mjs` (ou `.js`/`.cjs`/`.mts`) na raiz do projeto:
    - **Node.js / TypeScript:**
+
      ```js
      import alxConfig from '@ialexanderbrito/eslint-config/node';
 
      export default [...alxConfig];
      ```
    - **React:**
+
      ```js
      import alxConfig from '@ialexanderbrito/eslint-config/react';
 
      export default [...alxConfig];
      ```
    - **Next.js:**
+
      ```js
      import alxConfig from '@ialexanderbrito/eslint-config/next';
 
      export default [...alxConfig];
      ```
+
 2. (Opcional) Reaproveite exatamente a mesma configuração do Prettier no editor e na CLI criando `prettier.config.js`:
+
    ```js
    export { default } from '@ialexanderbrito/eslint-config/prettier';
    ```
 3. (Opcional) Personalize regras:
+
    ```js
    import alxConfig from '@ialexanderbrito/eslint-config/react';
 
@@ -221,11 +236,13 @@ pnpm add -D eslint @ialexanderbrito/eslint-config
 
 - **VSCode:** Instale as extensões [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) e [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) e use Node.js >=20.19.0.
 - **Rodar lint e autofix:**
+
   ```bash
   npx eslint .
   npx eslint --fix .
   ```
 - **Ver config final:**
+
   ```bash
   npx eslint --print-config src/index.ts
   ```
