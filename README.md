@@ -4,25 +4,40 @@
 [![npm downloads](https://img.shields.io/npm/dm/@ialexanderbrito/eslint-config.svg)](https://www.npmjs.com/package/@ialexanderbrito/eslint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-> Shareable ESLint 9 flat config for Node.js, React, and Next.js projects.
-
-🇺🇸 [English](#english) | 🇧🇷 [Português](#português)
+> **A complete, shareable ESLint 10+ Flat Config & Prettier 3+ setup for Node.js, React, and Next.js projects.**
 
 ---
 
-## English
+## 🌟 What is this?
 
-### ✨ Features
+This package provides a ready-to-use, opinionated ESLint 10+ and Prettier configuration for modern JavaScript/TypeScript projects. Every plugin is natively compatible with **ESLint 10 Flat Config** (zero peer-dependency conflicts) and integrated with **Prettier 3**.
 
-- ⚡ **ESLint 9** with Flat Config support
-- 📘 **TypeScript** first-class support
-- ⚛️ **React** & **React Hooks** plugins
-- ♿ **JSX A11y** for accessibility rules
-- 🎨 **Prettier** integration
-- 📦 **Import ordering** with automatic sorting
-- ▲ **Next.js** optimized configuration
+---
 
-### 📦 Installation
+## 🚦 Requirements
+
+- **ESLint**: `^10.0.0` (Flat Config only)
+- **Node.js**: `>=20.19.0`, `>=22.13.0`, or `>=24`
+- **TypeScript**: `>=5.0.0` (optional, for TypeScript projects)
+
+---
+
+## ✨ Features
+
+- ⚡ **ESLint 10+** native Flat Config (`@eslint/js` v10)
+- 📘 **TypeScript** support out of the box (`typescript-eslint` v8)
+- ⚛️ **React 19+** & **React Hooks v7** (`@eslint-react/eslint-plugin` + `eslint-plugin-react-hooks`)
+- ♿ **JSX Accessibility** (`eslint-plugin-jsx-a11y-x`, ESLint 10 native)
+- ▲ **Next.js 16+** Core Web Vitals (`@next/eslint-plugin-next`)
+- 📦 **Import sorting** (`eslint-plugin-import-x`)
+- 🎨 **Prettier 3** fully integrated (`eslint-plugin-prettier` + `eslint-config-prettier` v10) + shareable `./prettier` config
+- 🧬 **Biome** preset also exported (`./biome`)
+
+---
+
+## 📦 Installation
+
+Install ESLint and this config in your project:
 
 ```bash
 # npm
@@ -35,90 +50,122 @@ yarn add -D eslint @ialexanderbrito/eslint-config
 pnpm add -D eslint @ialexanderbrito/eslint-config
 ```
 
-### 🚀 Usage
+---
 
-Create an `eslint.config.mjs` file in your project root:
+## 🚀 Quick Start
 
-#### Node.js / TypeScript
+1. **Create an `eslint.config.mjs` (or `.js`/`.cjs`/`.mts`) file in your project root:**
 
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/node';
+   - **Node.js / TypeScript:**
+     ```js
+     import alxConfig from '@ialexanderbrito/eslint-config/node';
 
-export default [...alxConfig];
-```
+     export default [...alxConfig];
+     ```
+   - **React:**
+     ```js
+     import alxConfig from '@ialexanderbrito/eslint-config/react';
 
-#### React
+     export default [...alxConfig];
+     ```
+   - **Next.js:**
+     ```js
+     import alxConfig from '@ialexanderbrito/eslint-config/next';
 
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/react';
+     export default [...alxConfig];
+     ```
 
-export default [...alxConfig];
-```
+2. **(Optional) Share the exact same Prettier config with your editor & CLI:**
 
-#### Next.js
+   Create `prettier.config.js` (or `.mjs`) in your project root:
+   ```js
+   export { default } from '@ialexanderbrito/eslint-config/prettier';
+   ```
 
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/next';
+3. **(Optional) Customize rules:**
 
-export default [...alxConfig];
-```
+   Add your own config blocks after spreading the preset:
+   ```js
+   import alxConfig from '@ialexanderbrito/eslint-config/react';
 
-### ⚙️ Customization
+   export default [
+     ...alxConfig,
+     {
+       rules: {
+         // your custom rules here
+       },
+     },
+   ];
+   ```
 
-Add your own rules after spreading the configuration:
+---
 
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/react';
+## 🛠️ Migrating from `.eslintrc.*` (Legacy)
 
-export default [
-  ...alxConfig,
-  {
-    rules: {
-      // your custom rules here
-    },
-  },
-];
-```
+ESLint 10+ **only supports Flat Config**. If you are using `.eslintrc.json` or `.eslintrc.js`, migrate as follows:
 
-### 🔄 Migration from v2 to v3
-
-ESLint 9 introduced the new "Flat Config" format. Here are the main changes:
-
-1. Rename `.eslintrc.json` or `.eslintrc.js` to `eslint.config.mjs`
-2. Configuration format changed from object to array
-3. No more `extends` property - use spread operator instead
-
-**Before (v2):**
-
+**Before (legacy):**
 ```json
 {
   "extends": "@ialexanderbrito/eslint-config/react"
 }
 ```
 
-**After (v3):**
-
+**After (Flat Config):**
 ```js
 import alxConfig from '@ialexanderbrito/eslint-config/react';
 
 export default [...alxConfig];
 ```
 
+**Key differences:**
+- Config is now an array, not an object
+- No more `extends` — use the spread operator
+- File must be `eslint.config.js`, `.mjs`, `.cjs`, or `.mts`
+
+See [ESLint Flat Config docs](https://eslint.org/docs/latest/use/configure/configuration-files) for more info.
+
 ---
 
-## Português
+## 💡 Tips & Troubleshooting
 
-### ✨ Funcionalidades
+- **VSCode:** Install the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extensions and make sure your editor uses Node.js >=20.19.0.
+- **Run lint & autofix:**
+  ```bash
+  npx eslint .
+  npx eslint --fix .
+  ```
+- **Inspect resolved config:**
+  ```bash
+  npx eslint --print-config src/index.ts
+  ```
 
-- ⚡ **ESLint 9** com suporte a Flat Config
-- 📘 **TypeScript** suporte completo
-- ⚛️ Plugins **React** e **React Hooks**
-- ♿ **JSX A11y** para regras de acessibilidade
-- 🎨 Integração com **Prettier**
-- 📦 **Ordenação de imports** automática
-- ▲ Configuração otimizada para **Next.js**
+---
 
-### 📦 Instalação
+## 🌍 Português
+
+### O que é?
+
+Este pacote fornece uma configuração pronta para uso, moderna e opinativa de **ESLint 10+ (Flat Config)** e **Prettier 3+** para projetos Node.js, React, Next.js e TypeScript. Todos os plugins são nativamente compatíveis com ESLint 10 (sem conflitos de `peerDependencies`).
+
+### Requisitos
+
+- **ESLint**: `^10.0.0` (apenas Flat Config)
+- **Node.js**: `>=20.19.0`, `>=22.13.0` ou `>=24`
+- **TypeScript**: `>=5.0.0` (opcional, para projetos TypeScript)
+
+### Funcionalidades
+
+- ⚡ **ESLint 10+** (Flat Config nativo com `@eslint/js` v10)
+- 📘 Suporte completo a **TypeScript** (`typescript-eslint` v8)
+- ⚛️ Melhores práticas para **React 19+** e **React Hooks v7** (`@eslint-react/eslint-plugin` + `eslint-plugin-react-hooks`)
+- ♿ Regras de acessibilidade com **JSX A11y** (`eslint-plugin-jsx-a11y-x`)
+- ▲ Configuração otimizada para **Next.js 16+** (`@next/eslint-plugin-next` Core Web Vitals)
+- 📦 Ordenação automática de imports (`eslint-plugin-import-x`)
+- 🎨 Integração total com **Prettier 3** (`eslint-plugin-prettier` + `eslint-config-prettier` v10) + export `./prettier`
+- 🧬 Preset **Biome** também exportado (`./biome`)
+
+### Instalação
 
 ```bash
 # npm
@@ -131,74 +178,57 @@ yarn add -D eslint @ialexanderbrito/eslint-config
 pnpm add -D eslint @ialexanderbrito/eslint-config
 ```
 
-### 🚀 Como usar
+### Como usar
 
-Crie um arquivo `eslint.config.mjs` na raiz do seu projeto:
+1. Crie um arquivo `eslint.config.mjs` (ou `.js`/`.cjs`/`.mts`) na raiz do projeto:
+   - **Node.js / TypeScript:**
+     ```js
+     import alxConfig from '@ialexanderbrito/eslint-config/node';
 
-#### Node.js / TypeScript
+     export default [...alxConfig];
+     ```
+   - **React:**
+     ```js
+     import alxConfig from '@ialexanderbrito/eslint-config/react';
 
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/node';
+     export default [...alxConfig];
+     ```
+   - **Next.js:**
+     ```js
+     import alxConfig from '@ialexanderbrito/eslint-config/next';
 
-export default [...alxConfig];
-```
+     export default [...alxConfig];
+     ```
+2. (Opcional) Reaproveite exatamente a mesma configuração do Prettier no editor e na CLI criando `prettier.config.js`:
+   ```js
+   export { default } from '@ialexanderbrito/eslint-config/prettier';
+   ```
+3. (Opcional) Personalize regras:
+   ```js
+   import alxConfig from '@ialexanderbrito/eslint-config/react';
 
-#### React
+   export default [
+     ...alxConfig,
+     {
+       rules: {
+         // suas regras personalizadas aqui
+       },
+     },
+   ];
+   ```
 
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/react';
+### Dicas & Solução de Problemas
 
-export default [...alxConfig];
-```
-
-#### Next.js
-
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/next';
-
-export default [...alxConfig];
-```
-
-### ⚙️ Personalização
-
-Adicione suas próprias regras após o spread da configuração:
-
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/react';
-
-export default [
-  ...alxConfig,
-  {
-    rules: {
-      // suas regras personalizadas aqui
-    },
-  },
-];
-```
-
-### 🔄 Migração da v2 para v3
-
-O ESLint 9 introduziu o novo formato "Flat Config". Principais mudanças:
-
-1. Renomeie `.eslintrc.json` ou `.eslintrc.js` para `eslint.config.mjs`
-2. O formato mudou de objeto para array
-3. Não existe mais a propriedade `extends` - use spread operator
-
-**Antes (v2):**
-
-```json
-{
-  "extends": "@ialexanderbrito/eslint-config/react"
-}
-```
-
-**Depois (v3):**
-
-```js
-import alxConfig from '@ialexanderbrito/eslint-config/react';
-
-export default [...alxConfig];
-```
+- **VSCode:** Instale as extensões [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) e [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) e use Node.js >=20.19.0.
+- **Rodar lint e autofix:**
+  ```bash
+  npx eslint .
+  npx eslint --fix .
+  ```
+- **Ver config final:**
+  ```bash
+  npx eslint --print-config src/index.ts
+  ```
 
 ---
 
