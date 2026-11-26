@@ -1,33 +1,72 @@
-name: "💻 Semantic Release"
+name: Semantic Release
 
 on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
+
+permissions: {}
+
+concurrency:
+  group: semantic-release-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  release:
+  verify:
+    name: Verify
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint and tests
+        run: npm run check
+
+      - name: Validate package tarball
+        run: npm pack --dry-run
+
+  release:
+    name: Release
+    needs: verify
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
       issues: write
       pull-requests: write
     steps:
-      - name: 📚 Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: 🟢 Node.js
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: 📦 Install Dependencies
+          cache: npm
+
+      - name: Install dependencies
         run: npm ci
-      - name: ✅ Verify Package
-        run: npm run check
-      - name: 🚀 Semantic Release
+
+      - name: Run semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
         run: npx semantic-release
