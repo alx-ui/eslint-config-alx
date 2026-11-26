@@ -18,10 +18,12 @@ jobs:
       - name: 🟢 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           registry-url: https://registry.npmjs.org/
       - name: 📦 Install Dependencies
         run: npm ci
+      - name: ✅ Verify Package
+        run: npm run check
       - name: 🚀 Publish NPM
         run: npm publish --access public
         env:
