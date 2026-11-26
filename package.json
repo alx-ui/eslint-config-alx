@@ -46,7 +46,7 @@
     "typescript-eslint": "^8.74.0"
   },
   "scripts": {
-    "test": "node --test test",
+    "test": "node --test",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
