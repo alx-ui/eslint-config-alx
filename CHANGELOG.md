@@ -1,3 +1,19 @@
+# [3.0.0](https://github.com/alx-ui/eslint-config-alx/compare/v2.2.1...v3.0.0) (2026-11-26)
+
+
+* feat!: upgrade to ESLint 10 Flat Config and Prettier 3.10 ([d7d9427](https://github.com/alx-ui/eslint-config-alx/commit/d7d942701eb2f1dcaaebe6d0c0c3fec941101072))
+
+
+### Bug Fixes
+
+* format workflows and README with Biome and ignore generated CHANGELOG.md ([ab26b55](https://github.com/alx-ui/eslint-config-alx/commit/ab26b554577627bb640d4d393886d682619a883a))
+* use default node --test discovery for Node 24 compatibility ([257bee4](https://github.com/alx-ui/eslint-config-alx/commit/257bee4e1a4f5377abe5d9d4a80837ee1b3eea46))
+
+
+### BREAKING CHANGES
+
+* Requires ESLint >=10.0.0 and Node.js >=20.19.0. Replaces eslint-plugin-react (react/*) and eslint-plugin-jsx-a11y (jsx-a11y/*) with @eslint-react/eslint-plugin (@eslint-react/*) and eslint-plugin-jsx-a11y-x (jsx-a11y-x/*) for native ESLint 10 support.
+
 ## [2.2.1](https://github.com/alx-ui/eslint-config-alx/compare/v2.2.0...v2.2.1) (2025-12-16)
 
 
