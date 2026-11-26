@@ -102,7 +102,7 @@ jobs:
               echo "| Status | Skipped (already published) |"
             elif [ "$PUBLISH_OUTCOME" = "success" ]; then
               echo "| Status | Published with OIDC provenance |"
-              echo "| Registry | https://www.npmjs.com/package/${PKG_NAME}/v/${PKG_VERSION} |"
+              echo "| Registry | https://www.npmjs.com/package/${PKG_NAME} |"
             else
               echo "| Status | Failed |"
             fi
